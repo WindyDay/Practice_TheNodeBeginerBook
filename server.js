@@ -1,7 +1,7 @@
 var http = require("http");
 var url = require("url");
 
-function start(route){
+function start(route, handle){
     const PORT = process.env.PORT || 9000;
 
     function onRequest(request, response){
@@ -9,7 +9,7 @@ function start(route){
         var pathName = url.parse(request.url).pathname;
         console.log("path name: " + pathName);
 
-        route(pathName);
+        route(handle, pathName);
 
 
         response.writeHead(200, {"Content-Type": "text/plain"});

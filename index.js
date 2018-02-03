@@ -1,4 +1,11 @@
 const server = require("./server");
 const router = require("./router");
+const requestHandler = require("./requestHandler");
 
-server.start(router.route);
+let handle = {};
+
+handle['/'] = requestHandler.start;
+handle['/start'] = requestHandler.start;
+handle['/upload'] = requestHandler.upload;
+
+server.start(router.route, handle);
