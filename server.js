@@ -9,12 +9,12 @@ function start(route, handle){
         var pathName = url.parse(request.url).pathname;
         console.log("path name: " + pathName);
 
-        route(handle, pathName);
+        route(handle, pathName, response);
 
 
-        response.writeHead(200, {"Content-Type": "text/plain"});
-        response.write("Hello word");
-        response.end();
+        // response.writeHead(200, {"Content-Type": "text/plain"});
+        // response.write(content);
+        // response.end();
     }
     
     http.createServer(onRequest).listen(PORT, () => {
