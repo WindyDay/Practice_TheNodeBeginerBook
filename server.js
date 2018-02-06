@@ -1,15 +1,17 @@
-var http = require("http");
-var url = require("url");
+let http = require("http");
+let url = require("url");
+let route = require("./router").route;
 
-function start(route, handle){
+
+function start(){
     const PORT = process.env.PORT || 9000;
 
     function onRequest(request, response){
         
-        var pathName = url.parse(request.url).pathname;
+        let pathName = url.parse(request.url).pathname;
         console.log("Request for " + pathName + " recieved.");
 
-        route(handle, pathName,response, request);
+        route(pathName,response, request);
     }
     
     http.createServer(onRequest).listen(PORT, () => {

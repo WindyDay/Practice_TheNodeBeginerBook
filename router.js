@@ -1,4 +1,6 @@
-function route(handle, pathName, response, request){
+let handle = require("./requestHandler").handleURL;
+
+function route(pathName, response, request){
     console.log("About route a request for " + pathName);
     if(typeof handle[pathName] === 'function'){
         return handle[pathName](response, request);
